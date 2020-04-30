@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sphere Map Viewer</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<style type="text/css">
+body,html,#root {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background: #f2f2f2;
+  color:#333;
+  font-family: Monaco, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-weight: 400;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  padding:0;
+  margin:0;
+}
+* {
+  box-sizing: border-box;
+}
+#root {
+  z-index: 1;
+}
+.dropZoneCon {
+  z-index: 900;
+}
+.dropZoneCon,.dropZoneOverlay,.dropZoneInner {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family: Monaco, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-weight: 400;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  padding:0;
+  margin:0;
+  cursor: pointer;
+}
+.dropZoneInner {
+  text-align: center;
+  padding:12px;
+  z-index: 100;
+
+}
+.dropZoneBody {
+  text-align: center;
+  padding:12px;
+  z-index: 100;
+  width:100%;
+  height:100%;
+  position: relative;
+  top:0;
+  left:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 8px dashed #aaa;
+  color:#444;
+}
+.dropZoneMessage {
+  width:100%;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  font-size:36px;
+}
+.dropZoneOverlay {
+  z-index: 999;
+}
+
+.fileInputCon, .fileInputCon #hiddenFileInput {
+  visibility: hidden;
+  opacity: 0;
+  width:1px;
+  height:1px;
+  overflow: hidden;
+  display: inline-block;
+  position: fixed;
+  top:0;
+  left:0;
+
+}
+canvas {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:none;
+  outline:none;
+  padding:0;
+  margin:0;
+}
+</style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="dropZoneCon" id="dropZoneCon">
+    <div class="dropZoneInner">
+      <div class="dropZoneBody" id="dropZoneBody">
+        <div class="dropZoneMessage" id="dropZoneMessage">Drag a sphere map image into the page or click here to select a file...</div>
+        <div class="fileInputCon">
+          <input type="file" id="hiddenFileInput" accept="image/*" multiple />
+        </div>
+      </div>
+    </div>
+    <div class="dropZoneOverlay"></div>
+  </div>
+  <script src="lib/threejs/three.min.js"></script>
+  <script src="lib/threejs/OrbitControls.js"></script>
+  <script src="fileHandlerUI.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>
